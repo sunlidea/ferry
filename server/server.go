@@ -178,7 +178,8 @@ func (s *Server) ServeConn(conn net.Conn) {
 		msg, err := message.RecvMessage(r)
 		if err != nil {
 			if err == io.EOF {
-				log.Print("ferry.ServeConn: RecvMessage EOF: ", time.Now())
+				log.Print("ferry.ServeConn: the conn is closed by remote client: ",
+					time.Now())
 				return
 			} else {
 				log.Print("ferry.ServeConn: RecvMessage Fail: ", err.Error())
